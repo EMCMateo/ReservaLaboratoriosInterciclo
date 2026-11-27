@@ -9,10 +9,10 @@
 PRAGMA foreign_keys = ON;
 
 INSERT INTO LAB_USUARIOS (usu_codigo, usu_usuario, usu_contraseña, usu_rol) VALUES
- (1, 'admin',       '$2b$10$uYtRptnwodwEAlhY.BRB.OQ4fTXX1DkqsGTEwEnlCsuhtJbxfMA/G', 'A'),
- (2, 'docente1',    '$2b$10$LBarpIJIK9LI4437TcrCAuK2FDLuKxwsQ2bezBSoIaiBpois9xzTa', 'D'),
- (3, 'estudiante1', '$2b$10$KSmKKPdudy/NTZioa758su0HtWT2PSvYjsqwWwGKI.7FDOl67R0Q.', 'E'),
- (4, 'estudiante2', '$2b$10$KSmKKPdudy/NTZioa758su0HtWT2PSvYjsqwWwGKI.7FDOl67R0Q.', 'E');
+ (1, 'admin',       '$2b$10$uYtRptnwodwEAlhY.BRB.OQ4fTXX1DkqsGTEwEnlCsuhtJbxfMA/G', 'A',1),
+ (2, 'docente1',    '$2b$10$LBarpIJIK9LI4437TcrCAuK2FDLuKxwsQ2bezBSoIaiBpois9xzTa', 'D',1),
+ (3, 'estudiante1', '$2b$10$KSmKKPdudy/NTZioa758su0HtWT2PSvYjsqwWwGKI.7FDOl67R0Q.', 'E',1),
+ (4, 'estudiante2', '$2b$10$KSmKKPdudy/NTZioa758su0HtWT2PSvYjsqwWwGKI.7FDOl67R0Q.', 'E',1);
 
 INSERT INTO LAB_UBICACIONES (ubi_codigo, ubi_piso, ubi_edificio) VALUES
  (1, 1, 'Edificio A'),

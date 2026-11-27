@@ -10,6 +10,7 @@ const buscarPorUsuario = (usuUsuario) => {
         usu_rol
       FROM LAB_USUARIOS
       WHERE usu_usuario = ?
+        AND usu_activo = 1
     `;
 
     db.get(sql, [usuUsuario], (err, row) => {

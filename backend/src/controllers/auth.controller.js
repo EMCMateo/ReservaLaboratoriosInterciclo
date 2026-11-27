@@ -43,7 +43,7 @@ const login = async (req, res) => {
 
     const token = jwt.sign(
       payload,
-      process.env.JWT_SECRET || 'ups_reservas_lab_secret_2026',
+      process.env.JWT_SECRET,
       { expiresIn: '8h' }
     );
 

@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "db:init": "node scripts/init-db.js"
+    "dev": "node ./node_modules/nodemon/bin/nodemon.js server.js",
+    "db:init": "node scripts/init-db.js",
+    "db:migrate:usuarios": "node scripts/migrate-usuarios-activo.js"
   },
   "keywords": [],
   "author": "",

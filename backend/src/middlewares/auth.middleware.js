@@ -15,7 +15,7 @@ const verificarToken = (req, res, next) => {
   try {
     const decoded = jwt.verify(
       token,
-      process.env.JWT_SECRET || 'ups_reservas_lab_secret_2026'
+      process.env.JWT_SECRET
     );
     req.usuario = decoded;
     next();

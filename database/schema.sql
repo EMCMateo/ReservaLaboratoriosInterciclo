@@ -22,7 +22,8 @@ CREATE TABLE LAB_USUARIOS (
     usu_usuario    VARCHAR2 (100) NOT NULL UNIQUE,
     usu_contraseña VARCHAR2 (100) NOT NULL,  -- hash bcrypt, nunca texto plano
     usu_rol        CHAR (1) NOT NULL
-                   CHECK (usu_rol IN ('A','D','E'))  -- A: Administrador; D: Docente; E: Estudiante
+                   CHECK (usu_rol IN ('A','D','E')),  -- A: Administrador; D: Docente; E: Estudiante
+    usu_activo INTEGER NOT NULL DEFAULT 1 CHECK (usu_activo IN (0, 1))
 );
 
 CREATE TABLE LAB_UBICACIONES (
