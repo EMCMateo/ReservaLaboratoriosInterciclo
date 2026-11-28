@@ -1,5 +1,5 @@
 import { Component, inject, input, signal } from '@angular/core';
-import { Usuario } from '../../core/models/auth.model';
+import { Usuario } from '../../../core/models/auth.model';
 
 @Component({
   selector: 'app-usuarioslist',

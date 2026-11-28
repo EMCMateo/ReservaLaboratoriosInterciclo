@@ -1,11 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
-import { Usuarioslist } from '../../components/usuarioslist/usuarioslist';
+import { Usuarioslist } from '../../components/usuariocrud/usuarioslist/usuarioslist';
 import { UsuarioService } from '../../core/services/usuarios.service';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from '../../core/models/auth.model';
-import { Usuariosadd } from '../../components/usuariosadd/usuariosadd';
-import { Usuarioeditar } from '../../components/usuarioeditar/usuarioeditar';
-import { Usuarioeliminar } from '../../components/usuarioeliminar/usuarioeliminar';
+import { Usuariosadd } from '../../components/usuariocrud/usuariosadd/usuariosadd';
+import { Usuarioeditar } from '../../components/usuariocrud/usuarioeditar/usuarioeditar';
+import { Usuarioeliminar } from '../../components/usuariocrud/usuarioeliminar/usuarioeliminar';
 
 @Component({
   selector: 'app-crud-usuarios-page',

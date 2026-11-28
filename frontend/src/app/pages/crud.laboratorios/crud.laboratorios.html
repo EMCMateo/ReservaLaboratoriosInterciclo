@@ -1,0 +1,22 @@
+<section class="page">
+  <h1>Administrar laboratorios</h1>
+  <form (submit)="$event.preventDefault(); guardar()">
+    <label>Nombre<input required maxlength="150" [value]="nombre()" (input)="nombre.set(nombreInput.value)" #nombreInput></label>
+    <label>Código de ubicación<input required type="number" min="1" [value]="ubicacion()" (input)="ubicacion.set(ubicacionInput.value)" #ubicacionInput></label>
+    <label>Capacidad<input required type="number" min="1" max="99" [value]="capacidad()" (input)="capacidad.set(capacidadInput.value)" #capacidadInput></label>
+    <label>Software instalado<input required maxlength="100" [value]="software()" (input)="software.set(softwareInput.value)" #softwareInput></label>
+    <label>URL de foto<input [value]="foto()" (input)="foto.set(fotoInput.value)" #fotoInput></label>
+    <label>Estado<select [value]="estado()" (change)="estado.set(estadoInput.value === 'M' ? 'M' : 'D')" #estadoInput><option value="D">Disponible</option><option value="M">En mantenimiento</option></select></label>
+    <button>{{ editId() ? 'Guardar cambios' : 'Crear laboratorio' }}</button>
+    @if (editId()) { <button type="button" (click)="limpiar()">Cancelar edición</button> }
+  </form>
+  @if (mensaje()) { <p role="status">{{ mensaje() }}</p> }
+  <h2>Laboratorios registrados</h2>
+  <table><thead><tr><th>Nombre</th><th>Ubicación</th><th>Capacidad</th><th>Software</th><th>Estado</th><th>Acciones</th></tr></thead>
+    <tbody>@for (lab of items(); track lab.lab_codigo) { <tr>
+      <td>{{ lab.lab_nombre }}</td><td>{{ lab.ubi_edificio }}, piso {{ lab.ubi_piso }}</td><td>{{ lab.lab_capacidad }}</td>
+      <td>{{ lab.lab_software_usado }}</td><td>{{ lab.lab_estado === 'D' ? 'Disponible' : 'Mantenimiento' }}</td>
+      <td><button type="button" (click)="seleccionar(lab)">Editar</button> <button type="button" (click)="eliminar(lab.lab_codigo)">Eliminar</button></td>
+    </tr> }</tbody>
+  </table>
+</section>

@@ -28,6 +28,8 @@ const NAV_ITEMS: { label: string; route: string; roles: RolUsuario[] }[] = [
   { label: 'Incidencias', route: '/main/incidencias', roles: ['A', 'D', 'E'] },
   { label: 'Notificaciones', route: '/main/notificaciones', roles: ['A', 'D', 'E'] },
   { label: 'Reportes Admin', route: '/main/reportes', roles: ['A'] },
+  { label: 'Laboratorios', route: '/main/lab', roles: ['A'] },
+  { label: 'Equipos', route: '/main/equipo', roles: ['A'] },
 ] as const;
 
 @Component({

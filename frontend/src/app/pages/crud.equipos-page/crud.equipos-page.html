@@ -1,0 +1,20 @@
+<section class="page">
+  <h1>Administrar equipos</h1>
+  <form (submit)="$event.preventDefault(); guardar()">
+    <label>Código del equipo<input required type="number" min="1" max="9999" [value]="codigo()" (input)="codigo.set(codigoInput.value)" #codigoInput></label>
+    <label>Tipo de equipo (código)<input required type="number" min="1" [value]="tipo()" (input)="tipo.set(tipoInput.value)" #tipoInput></label>
+    <label>Laboratorio<select required [value]="laboratorio()" (change)="laboratorio.set(labInput.value)" #labInput><option value="">Selecciona laboratorio</option>@for (lab of laboratorios(); track lab.lab_codigo) { <option [value]="lab.lab_codigo">{{ lab.lab_nombre }}</option> }</select></label>
+    <label>Estado<select [value]="estado()" (change)="estado.set(estadoInput.value === 'D' ? 'D' : estadoInput.value === 'R' ? 'R' : 'O')" #estadoInput><option value="O">Operativo</option><option value="D">Dañado</option><option value="R">En reparación</option></select></label>
+    <button>{{ editId() ? 'Guardar cambios' : 'Crear equipo' }}</button>
+    @if (editId()) { <button type="button" (click)="limpiar()">Cancelar edición</button> }
+  </form>
+  @if (mensaje()) { <p role="status">{{ mensaje() }}</p> }
+  <h2>Equipos registrados</h2>
+  <table><thead><tr><th>Código</th><th>Tipo</th><th>Laboratorio</th><th>Estado</th><th>Acciones</th></tr></thead>
+    <tbody>@for (equipo of items(); track equipo.equ_id) { <tr>
+      <td>{{ equipo.equ_codigo }}</td><td>{{ equipo.tip_descripcion }}</td><td>{{ equipo.lab_nombre }}</td>
+      <td>{{ equipo.equ_estado === 'O' ? 'Operativo' : equipo.equ_estado === 'D' ? 'Dañado' : 'En reparación' }}</td>
+      <td><button type="button" (click)="seleccionar(equipo)">Editar</button> <button type="button" (click)="eliminar(equipo.equ_id)">Eliminar</button></td>
+    </tr> }</tbody>
+  </table>
+</section>

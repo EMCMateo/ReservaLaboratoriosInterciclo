@@ -7,6 +7,8 @@ import { ReportesProto } from './components/main-layout/reportes/reportes-proto'
 import { Login } from './components/auth/login/login';
 import { Inicio } from './components/main-layout/inicio/inicio';
 import { CrudUsuariosPage } from './pages/crud-usuarios-page/crud-usuarios-page';
+import { CrudEquiposPage } from './pages/crud.equipos-page/crud.equipos-page';
+import { CrudLaboratorios } from './pages/crud.laboratorios/crud.laboratorios';
 
 export const routes: Routes = [
   {
@@ -41,6 +43,16 @@ export const routes: Routes = [
         path :'estudiantes',
         canActivate :[roleGuard(['A'])],
         component : CrudUsuariosPage
+      },
+      {
+        path:'lab',
+        canActivate: [roleGuard(['A'])],
+        component : CrudLaboratorios
+      },
+      {
+        path:'equipo',
+        canActivate: [roleGuard(['A'])],
+        component : CrudEquiposPage
       }
     ]
   },

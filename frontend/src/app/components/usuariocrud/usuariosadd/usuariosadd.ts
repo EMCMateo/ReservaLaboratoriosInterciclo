@@ -1,5 +1,5 @@
 import { Component, inject, input, output, signal } from '@angular/core';
-import { UsuarioService } from '../../core/services/usuarios.service';
+import { UsuarioService } from '../../../core/services/usuarios.service';
 
 @Component({
   selector: 'app-usuariosadd',

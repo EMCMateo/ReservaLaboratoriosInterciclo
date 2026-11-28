@@ -1,6 +1,6 @@
 import { Component, inject, input, output, signal } from '@angular/core';
-import { Usuario } from '../../core/models/auth.model';
-import { UsuarioService } from '../../core/services/usuarios.service';
+import { Usuario } from '../../../core/models/auth.model';
+import { UsuarioService } from '../../../core/services/usuarios.service';
 
 @Component({ selector: 'app-usuarioeditar', standalone: true, templateUrl: './usuarioeditar.html', styleUrl: './usuarioeditar.css' })
 export class Usuarioeditar {
