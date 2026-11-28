@@ -1,0 +1,11 @@
+<app-usuarioslist
+    [listName]="titulo"
+    [usuarios]="usuarios()"
+/>
+
+<app-usuariosadd [rol]="rol" (usuarioCreado)="cargarUsuarios()"/>
+
+<app-usuarioeditar [usuarios]="usuarios()" (actualizado)="cargarUsuarios()"/>
+
+<app-usuarioeliminar [usuarios]="usuarios()" (eliminado)="cargarUsuarios()"/>
+

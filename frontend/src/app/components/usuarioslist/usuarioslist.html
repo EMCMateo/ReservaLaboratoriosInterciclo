@@ -1,0 +1,20 @@
+<h1>Gestion de {{listName()}} </h1>
+<ul>
+    @for (usuario of usuarios(); track usuario.usu_codigo; let idx = $index) {
+        @if(usuario.usu_rol=='D'){
+            <li>
+                <span>{{usuario.usu_codigo}}-{{usuario.usu_usuario}}--DOCENTE</span>
+            </li>
+        }@else if (usuario.usu_rol=='E') {
+            <li>
+                <span>{{usuario.usu_codigo}}--{{usuario.usu_usuario}}--ESTUDIANTE</span>
+            </li>
+        }@else {
+            <li>
+                <span>{{usuario.usu_codigo}}--{{usuario.usu_usuario}}--ADMINSTRADOR</span>
+            </li>
+        }
+        
+
+    }
+</ul>

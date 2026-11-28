@@ -1,0 +1,6 @@
+:host {
+  display: block;
+  margin-block: 1rem;
+}
+.form-card { display: grid; gap: .65rem; max-width: 30rem; padding: 1rem; border: 1px solid #ddd; border-radius: .5rem; }
+select, button { padding: .55rem; }

@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
@@ -20,6 +20,7 @@ export class AuthService {
 
   private readonly TOKEN_KEY = 'lab_token';
   private readonly USER_KEY = 'lab_usuario';
+  readonly usuarioActual = signal<UsuarioSesion | null>(this.leerUsuarioGuardado());
 
   login(credenciales: LoginRequest): Observable<LoginResponse> {
     return this.http
@@ -29,6 +30,7 @@ export class AuthService {
           if (res.ok && res.token) {
             localStorage.setItem(this.TOKEN_KEY, res.token);
             localStorage.setItem(this.USER_KEY, JSON.stringify(res.usuario));
+            this.usuarioActual.set(res.usuario);
           }
         })
       );
@@ -37,6 +39,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.USER_KEY);
+    this.usuarioActual.set(null);
     this.router.navigate(['/login']);
   }
 
@@ -45,6 +48,10 @@ export class AuthService {
   }
 
   obtenerUsuario(): UsuarioSesion | null {
+    return this.usuarioActual();
+  }
+
+  private leerUsuarioGuardado(): UsuarioSesion | null {
     const raw = localStorage.getItem(this.USER_KEY);
     if (!raw) return null;
     try {
@@ -55,7 +62,7 @@ export class AuthService {
   }
 
   obtenerRol(): RolUsuario | null {
-    return this.obtenerUsuario()?.usu_rol ?? null;
+    return this.usuarioActual()?.usu_rol ?? null;
   }
 
   estaAutenticado(): boolean {

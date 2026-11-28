@@ -1,0 +1,13 @@
+<section class="form-card">
+  <h2>Crear {{ rol() === 'D' ? 'docente' : 'estudiante' }}</h2>
+  <label>Usuario
+    <input type="text" [value]="nombre()" (input)="nombre.set(nombreInput.value)" #nombreInput autocomplete="off">
+  </label>
+  <label>Contraseña
+    <input type="password" [value]="password()" (input)="password.set(passwordInput.value)" #passwordInput autocomplete="new-password">
+  </label>
+  <button type="button" (click)="crear()" [disabled]="guardando()">
+    {{ guardando() ? 'Guardando…' : 'Crear usuario' }}
+  </button>
+  @if (mensaje()) { <p role="status">{{ mensaje() }}</p> }
+</section>

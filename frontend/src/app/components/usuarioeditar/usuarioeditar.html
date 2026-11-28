@@ -1,0 +1,9 @@
+<section class="form-card">
+  <h2>Editar usuario</h2>
+  <select #id><option value="">Selecciona usuario</option>@for (u of usuarios(); track u.usu_codigo) { <option [value]="u.usu_codigo">{{u.usu_usuario}}</option> }</select>
+  <input #nombre placeholder="Nuevo nombre de usuario">
+  <select #rol><option value="D">Docente</option><option value="E">Estudiante</option></select>
+  <input #password type="password" placeholder="Nueva contraseña (opcional)">
+  <button type="button" (click)="guardar(id.value, nombre.value, rol.value === 'E' ? 'E' : 'D', password.value)" [disabled]="guardando()">Guardar cambios</button>
+  @if (mensaje()) { <p role="status">{{mensaje()}}</p> }
+</section>

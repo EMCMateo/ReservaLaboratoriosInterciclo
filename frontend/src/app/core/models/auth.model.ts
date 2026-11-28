@@ -18,3 +18,15 @@ export interface LoginResponse {
   usuario: UsuarioSesion;
   mensaje?: string;
 }
+
+export interface Usuario {
+  usu_codigo: number;
+  usu_usuario: string;
+  usu_rol: 'D' | 'E';
+}
+
+export interface ListaUsuariosResponse {
+  ok: boolean;
+  usuarios: Usuario[];
+  mensaje?: string;
+}

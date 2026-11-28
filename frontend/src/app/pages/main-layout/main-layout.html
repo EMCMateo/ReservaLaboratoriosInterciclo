@@ -1,0 +1,50 @@
+<div
+  class="app-shell"
+  [style.--role-accent]="theme().accentColor"
+  [style.--role-soft]="theme().softBg"
+>
+  <header class="topbar">
+    <div class="topbar__left">
+      <button
+        type="button"
+        class="menu-btn"
+        aria-label="Abrir menú de navegación"
+        (click)="toggleMobileMenu()"
+      >
+        ☰
+      </button>
+      <span class="brand">LabReserva</span>
+      <a class="role-badge" routerLink="/main" aria-label="Volver al inicio">{{ theme().label }}</a>
+    </div>
+
+    <button type="button" class="logout-btn" (click)="cerrarSesion()">Cerrar sesión</button>
+  </header>
+
+  @if (mobileMenuOpen()) {
+    <div class="backdrop" (click)="toggleMobileMenu()"></div>
+  }
+
+  <aside class="sidebar" [class.is-open]="mobileMenuOpen()">
+    <div class="sidebar__header">
+      <p class="sidebar__title">{{ theme().label }}</p>
+      <p class="sidebar__desc">{{ theme().description }}</p>
+    </div>
+
+    <nav class="nav-list">
+      @for (item of visibleNavItems(); track item.route) {
+        <a
+          class="nav-link"
+          [routerLink]="item.route"
+          routerLinkActive="is-active"
+          (click)="mobileMenuOpen.set(false)"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+  </aside>
+
+  <main class="content">
+    <router-outlet />
+  </main>
+</div>

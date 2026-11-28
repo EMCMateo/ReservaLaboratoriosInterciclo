@@ -1,0 +1,14 @@
+<section class="proto-card">
+  <h2>Prototipo · Incidencias</h2>
+  <p>Sesión iniciada como <strong>{{ usuario()?.usu_usuario }}</strong>.</p>
+
+  @if (usuario()?.usu_rol === 'A') {
+    <p class="hint">Modo Administrador: gestión y cambio de estado de incidencias y equipos.</p>
+  } @else if (usuario()?.usu_rol === 'D') {
+    <p class="hint">Modo Docente: reporte y consulta de incidencias relacionadas con equipos.</p>
+  } @else if (usuario()?.usu_rol === 'E') {
+    <p class="hint">Modo Estudiante: reporte y consulta de incidencias relacionadas con equipos.</p>
+  } @else {
+    <p class="hint">No hay una sesión activa.</p>
+  }
+</section>

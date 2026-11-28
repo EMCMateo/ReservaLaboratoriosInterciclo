@@ -1,0 +1,9 @@
+<section class="proto-card">
+  <h2>Prototipo · Notificaciones</h2>
+  @if (usuario(); as cuenta) {
+    <p>Bandeja de <strong>{{ cuenta.usu_usuario }}</strong>.</p>
+    <p class="hint">Las notificaciones se cargarán para esta cuenta (código {{ cuenta.usu_codigo }}).</p>
+  } @else {
+    <p class="hint">No hay una sesión activa.</p>
+  }
+</section>

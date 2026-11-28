@@ -1,0 +1,6 @@
+<section class="form-card">
+  <h2>Desactivar usuario</h2>
+  <select #id><option value="">Selecciona usuario</option>@for (u of usuarios(); track u.usu_codigo) { <option [value]="u.usu_codigo">{{u.usu_usuario}}</option> }</select>
+  <button type="button" (click)="desactivar(id.value)" [disabled]="eliminando()">Desactivar</button>
+  @if (mensaje()) { <p role="status">{{mensaje()}}</p> }
+</section>

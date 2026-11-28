@@ -1,36 +1,51 @@
 import { Routes } from '@angular/router';
-import { MainLayout } from './layout/main-layout/main-layout';
+import { MainLayout } from './pages/main-layout/main-layout';
 import { authGuard, roleGuard } from './core/guards/auth.guard';
+import { IncidenciasProto } from './components/main-layout/incidencias/incidencias-proto';
+import { NotificacionesProto } from './components/main-layout/notificaciones/notificaciones-proto';
+import { ReportesProto } from './components/main-layout/reportes/reportes-proto';
+import { Login } from './components/auth/login/login';
+import { Inicio } from './components/main-layout/inicio/inicio';
+import { CrudUsuariosPage } from './pages/crud-usuarios-page/crud-usuarios-page';
 
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: () =>
-      import('./features/auth/login/login').then((m) => m.Login)
+    component: Login
   },
   {
-    path: '',
+    path: 'main',
     component: MainLayout,
     canActivate: [authGuard],
     children: [
-      { path: '', redirectTo: 'incidencias', pathMatch: 'full' },
+      { path: '', component: Inicio, pathMatch: 'full' },
       {
         path: 'incidencias',
-        loadComponent: () =>
-          import('./features/incidencias/incidencias-proto').then((m) => m.IncidenciasProto)
+        component : IncidenciasProto
       },
       {
         path: 'notificaciones',
-        loadComponent: () =>
-          import('./features/notificaciones/notificaciones-proto').then((m) => m.NotificacionesProto)
+        component : NotificacionesProto  
       },
       {
         path: 'reportes',
         canActivate: [roleGuard(['A'])],
-        loadComponent: () =>
-          import('./features/reportes/reportes-proto').then((m) => m.ReportesProto)
+        component : ReportesProto  
+      },
+      {
+        path: 'docentes',
+        canActivate: [roleGuard(['A'])],
+        component : CrudUsuariosPage
+      },
+      {
+        path :'estudiantes',
+        canActivate :[roleGuard(['A'])],
+        component : CrudUsuariosPage
       }
     ]
   },
-  { path: '**', redirectTo: '' }
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  
+  { path: '**', redirectTo: 'login' },
+  
 ];
